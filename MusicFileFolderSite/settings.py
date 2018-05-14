@@ -35,6 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'MusicSite.apps.MusicsiteConfig',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    # 'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -46,6 +49,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
+    'apps.area.context_processors.socials',
+)
 
 ROOT_URLCONF = 'MusicFileFolderSite.urls'
 
@@ -73,8 +82,12 @@ WSGI_APPLICATION = 'MusicFileFolderSite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'portalpostgressql',
+        'USER': 'postgres',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
